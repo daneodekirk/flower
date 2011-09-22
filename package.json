@@ -1,0 +1,11 @@
+{
+  "name": "flower",
+  "version": "0.0.1",
+  "main":".node_modules",
+  "dependencies": {
+    "express": "2.4.x",
+    "uglify-js" : "1.1.x",
+    "coffeekup" : "0.3.x"
+  },
+  "engine": "node >= 0.4.1"
+}
