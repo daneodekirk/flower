@@ -1,6 +1,9 @@
 fs   = require 'fs'
 express = require 'express'
 
+parser = require('uglify-js').parser
+uglify = require('uglify-js').uglify
+
 {exec} = require 'child_process'
 
 task 'layer', 'combine all coffeescript files into a single source', ->
@@ -20,6 +23,7 @@ task 'bake', 'Run the server', ->
   invoke 'layer'
   invoke 'icing'
   require './lib/seed'
+  console.log 'Done'
 
 combine = (files, name) ->
   appcontents = new Array remaining = files.length
@@ -32,4 +36,18 @@ combine = (files, name) ->
 process = (files, name) ->
   fs.writeFile "petals/#{name}", files.join('\n\n'), 'utf8', (err) ->
     throw err if err
-    console.log 'Done'
+    exec "coffee --compile petals/#{name}", (err, stdout, stderr) ->
+      console.log "Converting to javascript"
+      throw err if err
+      fs.unlink "petals/#{name}", (err) ->
+        name = name.replace '.coffee', '.js'
+        invoke minify name
+        throw err if err
+        
+minify = (file) ->
+  min = file.replace ".js", ".min.js"
+  code = fs.readFileSync('petals/app.js').toString()
+  console.log "Minifying #{file} into #{min}"
+  ast = parser.parse code
+  compressed = uglify.gen_code uglify.ast_squeeze uglify.ast_mangle ast, extra: yes
+  fs.writeFileSync "petals/#{min}", compressed
