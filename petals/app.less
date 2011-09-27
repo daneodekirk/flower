@@ -1,0 +1,37 @@
+@fontcolor: '#C3D1D8';
+@googlefont: 'Raleway', sans-serif;
+@flower: url('flower-full.jpg');
+
+html,body {
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+.flower {
+  display:block;
+  margin:0 auto;
+}
+
+.container {
+  height:100%;
+}
+
+.content {
+  position:relative;
+}
+
+.lynn { 
+  position:absolute;
+  left:40%;
+  color: @fontcolor;
+  font-family: @googlefont;
+  font-weight:100;
+}
+
+.overlay { 
+  background: @flower no-repeat 17% 13%;
+  display:none;
+}
