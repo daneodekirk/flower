@@ -6,8 +6,8 @@ html ->
     meta(name: 'description', content: @description) if @description?
 
     link rel: 'stylesheet', href: 'http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css'
-    link rel: 'stylesheef', href: 'http://fonts.googleapis.com/css?family=Raleway:100', type:'text/css'
-    link rel: 'stylesheef', href: 'app.less', type:'text/css'
+    link rel: 'stylesheet', href: 'http://fonts.googleapis.com/css?family=Raleway:100', type:'text/css'
+    link rel: 'stylesheet', href: 'app.css', type:'text/css'
 
   body ->
     div '.container', ->
