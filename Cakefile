@@ -21,9 +21,8 @@ task 'icing', 'combine all css files into a single source', ->
 
 task 'bake', 'Run the server', ->
   invoke 'layer'
-  invoke 'icing'
+  #invoke 'icing'
   require './lib/seed'
-  console.log 'Done'
 
 combine = (files, name) ->
   appcontents = new Array remaining = files.length
@@ -41,7 +40,7 @@ process = (files, name) ->
       throw err if err
       fs.unlink "petals/#{name}", (err) ->
         name = name.replace '.coffee', '.js'
-        invoke minify name
+        minify name
         throw err if err
         
 minify = (file) ->
@@ -51,3 +50,4 @@ minify = (file) ->
   ast = parser.parse code
   compressed = uglify.gen_code uglify.ast_squeeze uglify.ast_mangle ast, extra: yes
   fs.writeFileSync "petals/#{min}", compressed
+  console.log 'Files minified and ready'

@@ -10,7 +10,7 @@ app.register '.coffee', require('coffeekup').adapters.express
 
 app.use express.static "#{DIR}/petals", { maxAge: ONEWEEK }
 app.use express.errorHandler()
-app.use express.compiler { src:"#{DIR}/petals", enable: ['less', 'coffeescript'] }
+app.use express.compiler { src:"#{DIR}/petals", enable: ['less'] }
 
 app.get '/', (request, response) ->
   response.render 'index', foo: 'bar'

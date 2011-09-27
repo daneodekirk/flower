@@ -7,15 +7,7 @@ html ->
 
     link rel: 'stylesheet', href: 'http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css'
     link rel: 'stylesheef', href: 'http://fonts.googleapis.com/css?family=Raleway:100', type:'text/css'
-
-    style '''
-      html,body {margin:0;padding:0;width:100%;height:100%;overflow:hidden;}
-      .flower {display:block;margin:0 auto;}
-      .container {height:100%}
-      .content {position:relative;}
-      .lynn { position:absolute; left:40%; color:#c3d1d8;font-family: 'Raleway', sans-serif;font-weight:100;}
-      .overlay{ background: url(flower-full.jpg) no-repeat 17% 13%;display:none;}
-    '''
+    link rel: 'stylesheef', href: 'app.less', type:'text/css'
 
   body ->
     div '.container', ->
